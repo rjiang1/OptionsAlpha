@@ -5,14 +5,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class SearchActivity : AppCompatActivity() {
+class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search)
-
+        setContentView(R.layout.activity_profile)
 
         val nav_bar = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-//        val badgeDrawable = nav_bar.getBadge(menuItemId)
         nav_bar.setOnNavigationItemSelectedListener { item ->
             when(item.itemId){
                 R.id.nav_home -> {
