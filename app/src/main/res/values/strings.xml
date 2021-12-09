@@ -4,4 +4,9 @@
     <string name="nav_home">Home</string>
     <string name="nav_search">Search</string>
     <string name="nav_user">Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="frag_home">This is the home frag</string>
+    <string name="profile_frag">This is the profile frag</string>
+    <string name="search_frag">This is the search frag</string>
 </resources>

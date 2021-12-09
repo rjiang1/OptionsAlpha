@@ -14,40 +14,43 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+//        activity?.supportFragmentManager?.beginTransaction()
+//            ?.add(R.id.fragmentLayout,details)?.addToBackStack("f0")?.commit()
+
+        supportFragmentManager?.beginTransaction()?.add(R.id.frag_holder,HomeFragment()).addToBackStack("f0").commit()
+
         val nav_bar = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         nav_bar.setOnNavigationItemSelectedListener { item ->
             when(item.itemId){
                 R.id.nav_home -> {
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
+                    supportFragmentManager?.beginTransaction()?.replace(R.id.frag_holder,HomeFragment()).addToBackStack("f0").commit()
                     true
                 }
 
                 R.id.nav_search -> {
-                    val intent = Intent(this,SearchActivity::class.java)
-                    startActivity(intent)
+                    supportFragmentManager?.beginTransaction()?.replace(R.id.frag_holder,SearchFragment()).addToBackStack("f1").commit()
                     true
                 }
 
                 R.id.nav_profile ->{
-                    val intent = Intent(this,ProfileActivity::class.java)
-                    startActivity(intent)
+                    supportFragmentManager?.beginTransaction()?.replace(R.id.frag_holder,ProfileFragment()).addToBackStack("f2").commit()
                     true
                 }
                 else -> false
             }
         }
     }
-//
-//    override fun onCreateView(
-//        parent: View?,
-//        name: String,
-//        context: Context,
-//        attrs: AttributeSet
-//    ): View? {
-//
-//
-//        return super.onCreateView(parent, name, context, attrs)
-//    }
+
+    override fun onCreateView(
+        parent: View?,
+        name: String,
+        context: Context,
+        attrs: AttributeSet
+    ): View? {
+
+
+        return super.onCreateView(parent, name, context, attrs)
+    }
 
 }
