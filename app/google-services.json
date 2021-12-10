@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1011047247470",
+    "project_id": "options-alpha",
+    "storage_bucket": "options-alpha.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1011047247470:android:930bb8fb51dadc4bfb807f",
+        "android_client_info": {
+          "package_name": "com.example.optionsalpha"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1011047247470-n24of1e2j448l7kri6gt5vbu3o7r17t8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKS9sP02IjF-tMmKHwIwL8G7AOZGn_hJg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1011047247470-n24of1e2j448l7kri6gt5vbu3o7r17t8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
