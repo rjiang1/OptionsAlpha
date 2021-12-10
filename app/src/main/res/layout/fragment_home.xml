@@ -13,4 +13,10 @@
         android:layout_height="wrap_content"
         android:text="@string/frag_home" />
 
+    <TextView
+        android:id="@+id/sample"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/json_resp" />
+
 </LinearLayout>

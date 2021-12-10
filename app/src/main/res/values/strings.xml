@@ -9,4 +9,5 @@
     <string name="frag_home">This is the home frag</string>
     <string name="profile_frag">This is the profile frag</string>
     <string name="search_frag">This is the search frag</string>
+    <string name="json_resp">sample</string>
 </resources>

@@ -13,7 +13,7 @@ import com.google.android.material.navigation.NavigationView
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_sample)
 
 //        activity?.supportFragmentManager?.beginTransaction()
 //            ?.add(R.id.fragmentLayout,details)?.addToBackStack("f0")?.commit()
