@@ -23,7 +23,7 @@ import java.io.BufferedReader
 
 class MainActivity : AppCompatActivity() {
 //    val queue = Volley.newRequestQueue(this)
-
+    lateinit var displayName : String
 
     // See: https://developer.android.com/training/basics/intents/result
     private val signInLauncher = registerForActivityResult(
@@ -37,8 +37,9 @@ class MainActivity : AppCompatActivity() {
         if (result.resultCode == RESULT_OK) {
             // Successfully signed in
             val user = FirebaseAuth.getInstance().currentUser
-
-
+            displayName = user?.displayName.toString()
+            Toast.makeText(this,"Hello, {$displayName}!",Toast.LENGTH_LONG)
+//FirebaseAuth.getInstance().currentUser.displayName or user.displayName
 
 //            supportFragmentManager.beginTransaction().add(R.id.frag_holder,homeFrag).addToBackStack("f0").commit()
 
@@ -55,8 +56,8 @@ class MainActivity : AppCompatActivity() {
         // [START auth_fui_create_intent]
         // Choose authentication providers
         val providers = arrayListOf(
-            AuthUI.IdpConfig.EmailBuilder().build(),
-            AuthUI.IdpConfig.PhoneBuilder().build())
+            AuthUI.IdpConfig.EmailBuilder().build())
+//            AuthUI.IdpConfig.PhoneBuilder().build())
 
         // Create and launch sign-in intent
         val signInIntent = AuthUI.getInstance()

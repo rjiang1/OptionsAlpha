@@ -77,8 +77,10 @@ class HomeFragment : Fragment(), OptionsAdapter.MyItemClickListener {
     }
 
     override fun onItemClick(view: View, position: Int) {
-        Toast.makeText(context,"click option",Toast.LENGTH_SHORT)
-        activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.frag_holder,OptionDetail())
+//        Toast.makeText(context,"click option",Toast.LENGTH_SHORT)
+
+
+        activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.frag_holder,OptionDetail("Quote Input"))
             ?.addToBackStack("f0")
             ?.commit()
     }
