@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class SearchFragment : Fragment() {
 
-
+    lateinit var recycler : RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -31,7 +31,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun initRecycler(view: View?) {
-        val recycler = view?.findViewById<RecyclerView>(R.id.stonkList)
+        recycler = view?.findViewById(R.id.stonkList)!!
         recycler!!.layoutManager = androidx.recyclerview.widget.GridLayoutManager(activity,1)
         val tickers = StockData().tickers
         val myAdapter = StockAdapter(tickers)
@@ -42,6 +42,16 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+    }
+
+    fun searchCard(S: String){
+        if(!S.isNullOrEmpty()){
+            for ((i, item: String) in StockData().tickers.withIndex()) {
+                if(item.uppercase()?.contains(S.uppercase())!!){
+                    recycler.scrollToPosition(i)
+                }
+            }
+        }
     }
 
 

@@ -4,10 +4,19 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.optionsalpha.OptionsAdapter.*
+import com.google.firebase.database.Query
 import kotlinx.android.synthetic.main.stock_list_item.view.*
+import com.firebase.ui.database.FirebaseRecyclerAdapter
+import com.firebase.ui.database.FirebaseRecyclerOptions
 
-class OptionsAdapter(val items : List<String>) : androidx.recyclerview.widget.RecyclerView.Adapter<OptionsAdapter.ViewHolder>() {
+class OptionsAdapter(var modelClass : Class<Option>, var query: Query) : FirebaseRecyclerAdapter<Option, OptionsAdapter.ViewHolder>(
+    FirebaseRecyclerOptions.Builder<Option>()
+        .setQuery(query, modelClass)
+        .build()
+) {
 
     var myListener: MyItemClickListener? = null
     interface MyItemClickListener {
@@ -25,16 +34,16 @@ class OptionsAdapter(val items : List<String>) : androidx.recyclerview.widget.Re
         this.myListener = listener
     }
 
-    inner class ViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // hold textview
 
-        val ticker_name = itemView.ticker_name
+        var tickerName: TextView = itemView.findViewById(R.id.ticker_name)
 
 
         init {
             itemView.setOnClickListener {
                 if(myListener != null){
-                    if(adapterPosition != androidx.recyclerview.widget.RecyclerView.NO_POSITION){
+                    if(adapterPosition != RecyclerView.NO_POSITION){
                         myListener!!.onItemClick(it, adapterPosition)
                     }
                 }
@@ -44,12 +53,9 @@ class OptionsAdapter(val items : List<String>) : androidx.recyclerview.widget.Re
         }
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.ticker_name.text = items.get(index = position)
-    }
 
-    override fun getItemCount(): Int {
-        return items.size
+    override fun onBindViewHolder(p0: ViewHolder, p1: Int, p2: Option) {
+        p0.tickerName.text = p2.contract
     }
 
 }

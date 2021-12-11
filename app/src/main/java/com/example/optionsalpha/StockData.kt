@@ -1,7 +1,5 @@
 package com.example.optionsalpha
 class StockData{
-    //    var fr = FileReader("tickers.txt")
-    var portfolio_tickers = listOf<String>("GOOG Call @ $10000 By 12/11/21","AAPL Put @ $1 By 12/11/21","META Call @ $123 By 12/11/2311","TSLA Call @ $420.69 By 6/29/1971","GOOG Call @ $10000 By 12/11/21","AAPL Put @ $1 By 12/11/21","META Call @ $123 By 12/11/2311","TSLA Call @ $420.69 By 6/29/1971")
     var tickers = listOf<String>(
         "A",
         "AAB",
