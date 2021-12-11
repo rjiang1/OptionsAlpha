@@ -6,13 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
 import com.squareup.moshi.Moshi
 import okhttp3.*
 import org.w3c.dom.Text
 import java.io.IOException
 
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), OptionsAdapter.MyItemClickListener {
 
 //    val queue = Volley.newRequestQueue(activity)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,12 +28,7 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_home, container, false)
-        val txtView = view.findViewById<TextView>(R.id.sample)
-
-//        txtView.setOnClickListener(){
-//            txtView.text = "poop"
-//            jsonParse(view.findViewById(R.id.upperTxt))
-//        }
+        initRecycler(view)
 
 //        http()
 
@@ -70,6 +67,21 @@ class HomeFragment : Fragment() {
 
     }
 
+    private fun initRecycler(view: View?) {
+        val recycler = view?.findViewById<RecyclerView>(R.id.portfolio)
+        recycler!!.layoutManager = androidx.recyclerview.widget.GridLayoutManager(activity,1)
+        val tickers = StockData().portfolio_tickers
+        val myAdapter = OptionsAdapter(tickers)
+        recycler.adapter = myAdapter
+        myAdapter.setMyItemClickListener(this)
+    }
+
+    override fun onItemClick(view: View, position: Int) {
+        Toast.makeText(context,"click option",Toast.LENGTH_SHORT)
+        activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.frag_holder,OptionDetail())
+            ?.addToBackStack("f0")
+            ?.commit()
+    }
 
 
 //    fun jsonParse(view: TextView){

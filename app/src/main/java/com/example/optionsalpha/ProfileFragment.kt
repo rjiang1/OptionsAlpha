@@ -7,22 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.firebase.ui.auth.AuthUI
 
 
 class ProfileFragment() : Fragment() {
-
-    private fun signOut() {
-        // [START auth_fui_signout]
-        AuthUI.getInstance()
-            .signOut(requireContext())
-            .addOnCompleteListener {
-                // ...
-            }
-        // [END auth_fui_signout]
-    }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,9 +25,20 @@ class ProfileFragment() : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
-        val signOutButton = view.findViewById<Button>(R.id.signOutButton)
-        signOutButton.setOnClickListener{
+        fun signOut() {
+            // [START auth_fui_signout]
+            AuthUI.getInstance()
+                .signOut(container!!.context)
+                .addOnCompleteListener {
+                    Toast.makeText(container.context,"Bye!",Toast.LENGTH_SHORT)
+                }
+            // [END auth_fui_signout]
+        }
+
+        val btn = view.findViewById<Button>(R.id.signOutButton)
+        btn.setOnClickListener{
             signOut()
+
         }
 
         return view

@@ -8,17 +8,8 @@
     android:orientation="vertical"
     android:id="@+id/homeFragment">
 
-
-    <TextView
-        android:id="@+id/upperTxt"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/portfolio"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/frag_home" />
-
-    <TextView
-        android:id="@+id/sample"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="sample2" />
-
+        android:layout_height="match_parent" />
 </LinearLayout>

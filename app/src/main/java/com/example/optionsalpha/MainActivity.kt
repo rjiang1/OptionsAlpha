@@ -8,10 +8,8 @@ import android.util.AttributeSet
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.SearchView
-import android.widget.TextView
-import android.widget.Toolbar
+import android.view.ViewGroup
+import android.widget.*
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
@@ -42,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-            supportFragmentManager.beginTransaction().add(R.id.frag_holder,homeFrag).addToBackStack("f0").commit()
+//            supportFragmentManager.beginTransaction().add(R.id.frag_holder,homeFrag).addToBackStack("f0").commit()
 
             // ...
         } else {
@@ -76,9 +74,9 @@ class MainActivity : AppCompatActivity() {
 
 
 
-//        createSignInIntent()
+        createSignInIntent()
 
-        supportFragmentManager.beginTransaction().add(R.id.frag_holder,HomeFragment()).addToBackStack("f0").commit()
+        supportFragmentManager.beginTransaction().add(R.id.frag_holder,homeFrag).addToBackStack("f0").commit()
 //        actionBar!!.title = "Home"
 //        var tickers = StockData().tickers
 
@@ -89,7 +87,15 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
+    private fun signOut() {
+        // [START auth_fui_signout]
+        AuthUI.getInstance()
+            .signOut(this)
+            .addOnCompleteListener {
+                Toast.makeText(this,"Bye!", Toast.LENGTH_SHORT)
+            }
+        // [END auth_fui_signout]
+    }
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -98,8 +104,16 @@ class MainActivity : AppCompatActivity() {
         val searchView = search?.actionView as SearchView
         searchView.queryHint = "Search a Ticker"
         setUpBottomNav(search)
+
+//        searchView.setOnQueryTextListener(object)
+
+
+
         return super.onCreateOptionsMenu(menu)
     }
+
+
+
 
     fun setUpBottomNav(search : MenuItem){
 
@@ -122,7 +136,14 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.nav_profile ->{
                     search.isVisible = false
-                    supportFragmentManager?.beginTransaction()?.replace(R.id.frag_holder,ProfileFragment()).addToBackStack("f2").commit()
+                    val viewFrag = ProfileFragment()
+                    supportFragmentManager?.beginTransaction()?.replace(R.id.frag_holder,viewFrag).addToBackStack("f2").commit()
+                    signOut()
+                    Toast.makeText(this,"Bye!", Toast.LENGTH_SHORT)
+//                    val signOutButton = viewFrag.activity?.findViewById<Button>(R.id.signOutButton)
+//                    signOutButton?.setOnClickListener{
+//                        signOut()
+//                    }
 
                     true
                 }
@@ -130,6 +151,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+
 
 
 }
