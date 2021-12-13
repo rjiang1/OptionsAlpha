@@ -19,8 +19,7 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
-//apply plugin: 'com.android.application'
-//apply plugin: 'com.google.gms.google-services'
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
